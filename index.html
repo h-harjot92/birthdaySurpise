@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Surprise 💕</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    background: linear-gradient(135deg, #fff5f7, #ffe1e8, #fff8ee);
+    color: #55343b;
+    overflow-x: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.card {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    background: rgba(255,255,255,0.82);
+    padding: 35px 25px;
+    border-radius: 30px;
+    box-shadow: 0 20px 60px rgba(130,70,90,0.18);
+    backdrop-filter: blur(10px);
+}
+
+.small {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: clamp(45px, 12vw, 80px);
+    margin: 10px 0;
+    color: #b64261;
+    line-height: 1;
+}
+
+h2 {
+    color: #9b4c62;
+    font-size: 24px;
+}
+
+.subtitle {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.heart {
+    font-size: 35px;
+    animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.photo {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 25px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 15px 40px rgba(90,40,50,0.2);
+}
+
+button {
+    border: none;
+    padding: 16px 28px;
+    border-radius: 50px;
+    background: linear-gradient(135deg,#d94f70,#a93656);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(170,50,80,.25);
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.message {
+    display: none;
+    margin-top: 25px;
+    padding: 25px;
+    background: #fff8f6;
+    border-radius: 22px;
+    line-height: 1.8;
+    font-size: 17px;
+    border: 2px dashed #e6a1af;
+}
+
+.message.show {
+    display: block;
+    animation: appear 1s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.signature {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #a83d5c;
+}
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    animation: float 5s linear forwards;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(30deg);
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    top: -20px;
+    width: 9px;
+    height: 14px;
+    animation: fall 3s linear forwards;
+    z-index: 20;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+}
+
+.footer {
+    margin-top: 25px;
+    font-size: 13px;
+    opacity: .6;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<div class="heart">💕</div>
+
+<div class="small">
+✨ A little birthday surprise for someone very special ✨
+</div>
+
+<h1>
+Happy<br>
+Birthday!
+</h1>
+
+<h2>To an amazing friend & super mom 👩‍🍼</h2>
+
+<p class="subtitle">
+Today isn't just about another year...
+<br>
+It's about celebrating <b>YOU</b>. 💖
+</p>
+
+
+<!-- Cute birthday image -->
+<img
+class="photo"
+src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=900&q=85"
+alt="Birthday celebration"
+>
+
+
+<button onclick="openSurprise()">
+🎁 Open Your Surprise
+</button>
+
+
+<div id="message" class="message">
+
+<p>
+🌷 May your birthday be filled with
+love, laughter and beautiful little moments.
+</p>
+
+<p>
+👶 This year is extra special because
+you are experiencing the beautiful journey
+of being a new mom.
+</p>
+
+<p>
+💕 You take care of everyone around you,
+so today I hope you take a little time
+to celebrate <b>yourself</b> too.
+</p>
+
+<p>
+✨ May this new chapter bring you
+endless happiness, peaceful moments
+and lots of beautiful memories.
+</p>
+
+<p>
+🎂 Happy Birthday to a truly wonderful
+person and an amazing new mom!
+</p>
+
+<div class="signature">
+With lots and lots of love 💕
+</div>
+
+</div>
+
+
+<div class="footer">
+Made with ❤️ especially for you
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openSurprise() {
+
+    const message = document.getElementById("message");
+
+    message.classList.add("show");
+
+    createConfetti();
+
+    createHearts();
+
+    document.querySelector("button").innerHTML =
+        "🎉 Let's Celebrate! 💕";
+
+}
+
+
+/* CONFETTI */
+
+function createConfetti() {
+
+    const symbols = ["♥","✦","✿","•","♡"];
+
+    for(let i = 0; i < 80; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.innerHTML =
+            symbols[Math.floor(Math.random()*symbols.length)];
+
+        confetti.style.left =
+            Math.random() * 100 + "vw";
+
+        confetti.style.fontSize =
+            (10 + Math.random()*15) + "px";
+
+        confetti.style.animationDelay =
+            Math.random() * 1 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+            confetti.remove();
+        }, 4000);
+    }
+}
+
+
+/* FLOATING HEARTS */
+
+function createHearts() {
+
+    for(let i = 0; i < 20; i++) {
+
+        const heart =
+            document.createElement("div");
+
+        heart.className =
+            "floating-heart";
+
+        heart.innerHTML =
+            Math.random() > .4 ? "💕" : "💗";
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (4 + Math.random()*4) + "s";
+
+        heart.style.animationDelay =
+            Math.random()*2 + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+}
+
+</script>
+
+</body>
+</html>
